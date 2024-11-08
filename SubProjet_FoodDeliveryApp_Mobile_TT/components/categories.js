@@ -39,6 +39,8 @@ export default function Categories() {
 const styles= StyleSheet.create({
     categories_image: {
         width:45,
-        height:45
+        height:45,
+        borderRadius: 22.5,
+        overflow: 'hidden'
     }
 })

@@ -158,7 +158,7 @@ export const restaurants = [
     address: "2A Hàng Bài",
     starts: 4.5,
     reviews: 120,
-    category: "1",
+    category: categories[0],
     dishes: dishes1,
   },
   {
@@ -171,7 +171,7 @@ export const restaurants = [
     address: "123 Nguyễn Văn Bảo",
     starts: 4.0,
     reviews: 98,
-    category: "2",
+    category: categories[1],
     dishes: dishes2,
   },
   {
@@ -184,7 +184,7 @@ export const restaurants = [
     address: "72/13 Phan Văn Trị",
     starts: 4.7,
     reviews: 150,
-    category: "3",
+    category: categories[2],
     dishes: dishes3,
   },
   {
@@ -197,7 +197,7 @@ export const restaurants = [
     address: "1 Lê Lợi",
     starts: 4.6,
     reviews: 80,
-    category: "4",
+    category: categories[3],
     dishes: dishes4,
   },
   {
@@ -210,39 +210,39 @@ export const restaurants = [
     address: "102/15/36 Lê Đức Thọ",
     starts: 4.8,
     reviews: 200,
-    category: "5",
+    category: categories[4],
     dishes: dishes5,
   },
 ];
 export const featured = [
   {
     id: "1",
-    title: "Top Italian Restaurants",
-    description: "Best Italian food for pizza lovers.",
-    restaurants: [restaurants[0], restaurants[1]],
+    title: "Top nhà hàng Ý",
+    description: "Lựa chọn hoàn hảo cho người yêu Pizza",
+    restaurants: [restaurants[0], restaurants[1],restaurants[2],restaurants[3]],
   },
   {
     id: "2",
-    title: "Best Chinese Dishes",
-    description: "A collection of the most popular Chinese dishes.",
+    title: "Các món Trung được yêu thích",
+    description: "Xu hướng giới trẻ",
     restaurants: [restaurants[1]],
   },
   {
     id: "3",
-    title: "Tacos Lovers' Paradise",
-    description: "The ultimate taco experience.",
+    title: "Món bánh Tacos",
+    description: "Món ăn hot trend",
     restaurants: [restaurants[2], restaurants[3]],
   },
   {
     id: "4",
-    title: "Indian Delights",
-    description: "Explore the richness of Indian cuisine.",
+    title: "ĐỘC VÀ LẠ",
+    description: "Thưởng thức hương vị Ấn Độ",
     restaurants: [restaurants[3]],
   },
   {
     id: "5",
-    title: "Sushi Showcase",
-    description: "Fresh sushi and Japanese dishes.",
+    title: "Dân sành ăn ",
+    description: "Đồ tươi sống chất lượng",
     restaurants: [restaurants[4]],
   },
 ];

@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { themeColors } from '../theme'
+import Restaurants from './restaurant'
 
 export default function FeaturedRow({title, description,restaurants}) {
   return (
@@ -21,11 +22,17 @@ export default function FeaturedRow({title, description,restaurants}) {
              contentContainerStyle={{
                  paddingHorizontal: 15
              }}
-             style={tw`overflow-visible py-5`}
+             style={tw`overflow-visible py-5  `}
         
         >
            {restaurants.map((restaurant,index)=> {
-                
+                return (
+                    <Restaurants
+                        item= {restaurant}
+                        key={index}
+
+                    />
+                )
            })}
 
 

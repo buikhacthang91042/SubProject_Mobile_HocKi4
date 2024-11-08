@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
@@ -12,7 +12,7 @@ import FeaturedRow from "../components/featuredRow";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={tw`bg-white`}>
+    <SafeAreaView style={tw`bg-white flex-1`}>
       <StatusBar barStyle="dark-content" />
 
       {/* Thanh tìm kiếm */}
@@ -70,7 +70,7 @@ export default function HomeScreen() {
                 title= {item.title}
                 description = {item.description}
                 restaurants= {item.restaurants}
-                
+                    
                 
                 />
               )
@@ -78,6 +78,59 @@ export default function HomeScreen() {
           }
         </View>
       </ScrollView>
+      <View style={style.footer}>
+        <View style={style.viewFooter}>
+          <TouchableOpacity style={style.footerV}>
+            <Icon.Home height="28" width="30" stroke="black" />
+            <Text>Home</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={style.viewFooter}>
+          <TouchableOpacity style={style.footerV}>
+            <Icon.FileText height="28" width="30" stroke="black" />
+            <Text>My order</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={style.viewFooter}>
+          <TouchableOpacity style={style.footerV}>
+            <Icon.Heart  height="28" width="30" stroke="black" />
+            <Text>Favorite</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={style.viewFooter}>
+          <TouchableOpacity style={style.footerV}>
+            <Icon.MessageCircle  height="28" width="30" stroke="black" />
+            <Text>Inbox</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={style.viewFooter}>
+          <TouchableOpacity style={style.footerV}>
+            <Icon.User  height="28" width="30" stroke="black" />
+            <Text>Account</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      
     </SafeAreaView>
   );
 }
+const style = StyleSheet.create({
+  footer: {
+    height:70,
+    backgroundColor: "white",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    borderRadius: 0,
+    borderTopWidth: 1,
+    borderTopColor: "#D1D5DB"
+  },
+  viewFooter: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  footerV: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  
+});
