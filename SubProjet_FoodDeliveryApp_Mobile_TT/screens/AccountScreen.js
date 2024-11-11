@@ -5,14 +5,18 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
-  Switch
+  Switch,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
 import Feather from "react-native-vector-icons/Feather";
+import Login from "./Login";
+import { useNavigation } from "@react-navigation/native";
 export default function AccountScreen() {
+  const navigation = useNavigation();
   const [nhanThongBao, setNhanThongBao] = useState(false);
   const [nhanThongBaoKM, setNhanThongBaoKM] = useState(false);
   const [cheDoToi, setCheDoToi] = useState(false);
@@ -24,11 +28,11 @@ export default function AccountScreen() {
           <View style={style.title}>
             <Text style={style.headerText}>Tài Khoản</Text>
             <View style={{ marginRight: 8, marginTop: 10 }}>
-            <TouchableOpacity>
-              <Feather name="bell" size={20} color="white" />
-              <View style={style.thongBao}>
-                <Text style={style.textThongBao}>99</Text>
-              </View>
+              <TouchableOpacity>
+                <Feather name="bell" size={20} color="white" />
+                <View style={style.thongBao}>
+                  <Text style={style.textThongBao}>99</Text>
+                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -53,20 +57,35 @@ export default function AccountScreen() {
           <View style={style.bangLuaChon}>
             <View style={style.luaChon}>
               <TouchableOpacity>
-                <Feather name="truck" size={30} color="#009999" style={{ marginLeft: 16 }} />
+                <Feather
+                  name="truck"
+                  size={30}
+                  color="#009999"
+                  style={{ marginLeft: 16 }}
+                />
                 <Text style={style.textLuaChon}>Đơn hàng</Text>
               </TouchableOpacity>
             </View>
             <View style={style.luaChon}>
-            <TouchableOpacity>
-              <Feather name="codesandbox" size={30} color="#FF3333" style={{ marginLeft: 34 }} />
-              <Text style={style.textLuaChon}>Mã khuyến mãi</Text>
+              <TouchableOpacity>
+                <Feather
+                  name="codesandbox"
+                  size={30}
+                  color="#FF3333"
+                  style={{ marginLeft: 34 }}
+                />
+                <Text style={style.textLuaChon}>Mã khuyến mãi</Text>
               </TouchableOpacity>
             </View>
             <View style={style.luaChon}>
-            <TouchableOpacity>
-              <Feather name="book-open" size={30} color="#FFCC00" style={{ marginLeft: 10 }}/>
-              <Text style={style.textLuaChon}>Địa chỉ</Text>
+              <TouchableOpacity>
+                <Feather
+                  name="book-open"
+                  size={30}
+                  color="#FFCC00"
+                  style={{ marginLeft: 10 }}
+                />
+                <Text style={style.textLuaChon}>Địa chỉ</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -76,59 +95,71 @@ export default function AccountScreen() {
             <View style={style.chucNang}>
               <Text style={style.tieuDeChucNang}>Tài khoản của tôi</Text>
               <View style={style.nutchucNang}>
-                <TouchableOpacity style={{flexDirection:"row"}}>
-                  <Feather name="user" size={20} color="#009999"/>
+                <TouchableOpacity style={{ flexDirection: "row" }}>
+                  <Feather name="user" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Quản lí tài khoản </Text>
-                  <Feather name="chevron-right" size={20} style={{marginLeft:18}}/>
+                  <Feather
+                    name="chevron-right"
+                    size={20}
+                    style={{ marginLeft: 18 }}
+                  />
                 </TouchableOpacity>
               </View>
               <View style={style.nutchucNang}>
-                <TouchableOpacity style={{flexDirection:"row"}}>
-                  <Feather name="layout" size={20} color="#009999"/>
+                <TouchableOpacity style={{ flexDirection: "row" }}>
+                  <Feather name="layout" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Phương thức thanh toán</Text>
-                  <Feather name="chevron-right" size={20} style={{marginLeft:18}}/>
+                  <Feather
+                    name="chevron-right"
+                    size={20}
+                    style={{ marginLeft: 18 }}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
             <View style={style.chucNang}>
               <Text style={style.tieuDeChucNang}>Thông báo</Text>
               <View style={style.Switch}>
-                  <Feather name="bell" size={20} color="#009999"/>
-                  <Text style={style.tenChucNang}>Thông báo </Text>
-                  <Switch 
-                    value={nhanThongBao}
-                    onValueChange={() => setNhanThongBao(!nhanThongBao)}
-                  />
-                
+                <Feather name="bell" size={20} color="#009999" />
+                <Text style={style.tenChucNang}>Thông báo </Text>
+                <Switch
+                  value={nhanThongBao}
+                  onValueChange={() => setNhanThongBao(!nhanThongBao)}
+                />
               </View>
               <View style={style.Switch}>
-                
-                  <Feather name="bell" size={20} color="#009999"/>
-                  <Text style={style.tenChucNang}>Thông báo khuyến mãi</Text>
-                  <Switch 
-                    value={nhanThongBaoKM}
-                    onValueChange={() => setNhanThongBaoKM(!nhanThongBaoKM)}
-                  />
-             
+                <Feather name="bell" size={20} color="#009999" />
+                <Text style={style.tenChucNang}>Thông báo khuyến mãi</Text>
+                <Switch
+                  value={nhanThongBaoKM}
+                  onValueChange={() => setNhanThongBaoKM(!nhanThongBaoKM)}
+                />
               </View>
             </View>
             <View style={style.chucNang}>
               <Text style={style.tieuDeChucNang}>Hơn nữa</Text>
               <View style={style.Switch}>
-                
-                  <Feather name="moon" size={20} color="#009999"/>
-                  <Text style={style.tenChucNang}>Chế độ tối </Text>
-                  <Switch 
-                    value={cheDoToi}
-                    onValueChange={() => setCheDoToi(!cheDoToi)}
-                  />
-              
+                <Feather name="moon" size={20} color="#009999" />
+                <Text style={style.tenChucNang}>Chế độ tối </Text>
+                <Switch
+                  value={cheDoToi}
+                  onValueChange={() => setCheDoToi(!cheDoToi)}
+                />
               </View>
               <View style={style.nutchucNang}>
-                <TouchableOpacity style={{flexDirection:"row"}}>
-                  <Feather name="log-out" size={20} color="#009999"/>
+                <TouchableOpacity
+                  style={{ flexDirection: "row" }}
+                  onPress={() => {
+                    Alert.alert("Xác nhận", "Bạn có muốn đăng xuất ?",[{text:"Không",style:"cancel"},{text:"Có",onPress:() => navigation.reset({
+                      index: 0,
+                      routes: [{ name: "Login" }],
+                    })}],{cancelable:false});
+                  }
+                    
+                  }
+                >
+                  <Feather name="log-out" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Đăng xuất</Text>
-                  
                 </TouchableOpacity>
               </View>
             </View>
@@ -176,7 +207,7 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems:"center",
+    alignItems: "center",
     width: "90%",
     marginLeft: 20,
     marginTop: 100,
@@ -184,18 +215,17 @@ const style = StyleSheet.create({
     borderRadius: 16,
   },
   luaChon: {
-    
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     width: "30%",
-    paddingVertical:10
+    paddingVertical: 10,
   },
   textLuaChon: {
     fontSize: 16,
     fontWeight: "semibold",
-    textAlign:"center",
-    marginTop:4
+    textAlign: "center",
+    marginTop: 4,
   },
   body: {
     flex: 1,
@@ -217,45 +247,40 @@ const style = StyleSheet.create({
     lineHeight: 10 * 1.4,
     color: "red",
   },
-  chucNang:{
-    height:140,
-    padding:12,
-    marginTop:10,
-    
-    
+  chucNang: {
+    height: 140,
+    padding: 12,
+    marginTop: 10,
   },
   nutchucNang: {
     flexDirection: "row",
-    width: "100%", 
-    padding: 8,   
-    alignItems: "center", 
-    justifyContent: "space-between", 
-    
+    width: "100%",
+    padding: 8,
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  bangChucNang:{
-    height:450, 
+  bangChucNang: {
+    height: 450,
     flexDirection: "column",
     backgroundColor: "white",
-    width: "90%", 
+    width: "90%",
     marginLeft: 20,
     borderRadius: 16,
-    marginTop:-90,
-    
+    marginTop: -90,
   },
-  tenChucNang:{
-    marginLeft:10,
-    width:"80%",
-    fontSize:16
+  tenChucNang: {
+    marginLeft: 10,
+    width: "80%",
+    fontSize: 16,
   },
-  tieuDeChucNang:{
-    fontWeight:"bold",
-    fontSize:20
+  tieuDeChucNang: {
+    fontWeight: "bold",
+    fontSize: 20,
   },
-  Switch:{
-    flex:1,
-    padding:6,
-    flexDirection:"row",
-    marginTop:10
-
-  }
+  Switch: {
+    flex: 1,
+    padding: 6,
+    flexDirection: "row",
+    marginTop: 10,
+  },
 });

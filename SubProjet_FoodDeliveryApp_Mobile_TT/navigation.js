@@ -17,11 +17,11 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator >
-       {/*  <Stack.Screen 
+       <Stack.Screen 
           name="Login" 
           component={Login} 
           options={{ headerShown: false }} 
-        /> */}
+        /> 
         <Stack.Screen 
           name="HomeTabs" 
           component={HomeTabs} 
