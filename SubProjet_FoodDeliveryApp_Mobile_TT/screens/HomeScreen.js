@@ -78,38 +78,7 @@ export default function HomeScreen() {
           }
         </View>
       </ScrollView>
-      <View style={style.footer}>
-        <View style={style.viewFooter}>
-          <TouchableOpacity style={style.footerV}>
-            <Icon.Home height="28" width="30" stroke="black" />
-            <Text>Home</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.viewFooter}>
-          <TouchableOpacity style={style.footerV}>
-            <Icon.FileText height="28" width="30" stroke="black" />
-            <Text>My order</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.viewFooter}>
-          <TouchableOpacity style={style.footerV}>
-            <Icon.Heart  height="28" width="30" stroke="black" />
-            <Text>Favorite</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.viewFooter}>
-          <TouchableOpacity style={style.footerV}>
-            <Icon.MessageCircle  height="28" width="30" stroke="black" />
-            <Text>Inbox</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.viewFooter}>
-          <TouchableOpacity style={style.footerV}>
-            <Icon.User  height="28" width="30" stroke="black" />
-            <Text>Account</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      
       
     </SafeAreaView>
   );

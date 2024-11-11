@@ -11,7 +11,10 @@ export default function() {
         const taiKhoan = "thang";
         const mk = "123";
         if((email == taiKhoan) && (password == mk) ){
-            navigation.navigate("Home");
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'HomeTabs' }],
+              });
         }
         else{
             Alert.alert("Lá»—i Ä‘Äƒng nháº­p","Sai tÃ i khoáº£n hoáº·c máº­t kháº©u ");
