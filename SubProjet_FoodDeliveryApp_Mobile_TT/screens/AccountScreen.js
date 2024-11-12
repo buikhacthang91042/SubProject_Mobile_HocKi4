@@ -20,6 +20,24 @@ export default function AccountScreen() {
   const [nhanThongBao, setNhanThongBao] = useState(false);
   const [nhanThongBaoKM, setNhanThongBaoKM] = useState(false);
   const [cheDoToi, setCheDoToi] = useState(false);
+  function handleLogOut() {
+    Alert.alert(
+      "Xác nhận",
+      "Bạn có muốn đăng xuất ?",
+      [
+        { text: "Không", style: "cancel" },
+        {
+          text: "Có",
+          onPress: () =>
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "Login" }],
+            }),
+        },
+      ],
+      { cancelable: false }
+    );
+  }
   return (
     <SafeAreaView style={tw`flex-1 `}>
       <View style={style.container}>
@@ -149,14 +167,7 @@ export default function AccountScreen() {
               <View style={style.nutchucNang}>
                 <TouchableOpacity
                   style={{ flexDirection: "row" }}
-                  onPress={() => {
-                    Alert.alert("Xác nhận", "Bạn có muốn đăng xuất ?",[{text:"Không",style:"cancel"},{text:"Có",onPress:() => navigation.reset({
-                      index: 0,
-                      routes: [{ name: "Login" }],
-                    })}],{cancelable:false});
-                  }
-                    
-                  }
+                  onPress={handleLogOut}
                 >
                   <Feather name="log-out" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Đăng xuất</Text>

@@ -12,6 +12,9 @@ import MyOrderScreen from './screens/MyOrderScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
 import InboxScreen from './screens/InboxScreen';
 import * as Icon from "react-native-feather";
+import SignUpScreen from './screens/SignUpScreen';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import RegisterPhoneScreen from './screens/RegisterPhoneScreen';
 
 export default function Navigation() {
   return (
@@ -25,6 +28,21 @@ export default function Navigation() {
         <Stack.Screen 
           name="HomeTabs" 
           component={HomeTabs} 
+          options={{ headerShown: false }} 
+        />
+         <Stack.Screen 
+          name="SignUp" 
+          component={SignUpScreen} 
+          options={{ headerShown: false }} 
+        />
+          <Stack.Screen 
+          name="ForgotPassword" 
+          component={ForgotPasswordScreen} 
+          options={{ headerShown: false }} 
+        />
+          <Stack.Screen 
+          name="RegisterPhone" 
+          component={RegisterPhoneScreen} 
           options={{ headerShown: false }} 
         />
       </Stack.Navigator>
