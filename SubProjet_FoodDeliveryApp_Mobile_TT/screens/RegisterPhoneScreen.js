@@ -12,12 +12,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import StaticImageService from "../services/StaticImageService";
 import CountryCode from "../constants/CountryCode";
+import CountryPicker from "react-native-country-picker-modal";
 export default function RegisterPhoneScreen() {
   const navigation = useNavigation();
-  const [chonQuocGia, setChonQuocGia] = useState(
-    CountryCode.find((country) => country.name === "Vietnam")
-  );
-  const [inputContainerY, setinputContainerY] = useState(0);
+  const [chonQuocGia, setChonQuocGia] = useState("VN");
+  const [dialcode, setDialCode] = useState("+84");
+  const [phoneNumber, setPhoneNumber] = useState("");
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -28,29 +28,34 @@ export default function RegisterPhoneScreen() {
       </TouchableOpacity>
       <Text style={styles.headerText}>Xác thực số điện thoại</Text>
       <Text style={styles.subHeaderText}>Vui lòng nhập số điện thoại</Text>
-      <View
-        style={styles.inputContainer}
-        onLayout={({
-          nativeEvent: {
-            layout: { y },
-          },
-        }) => setinputContainerY(y)}
-      >
-        <TouchableOpacity style={styles.countryList}>
-          <Image
-            source={{ uri: StaticImageService.getFlagIcon(chonQuocGia.code) }}
-            style={styles.coQuocGia}
+      <View style={styles.inputContainer}>
+        <View style={styles.dsQuocGia}>
+          <CountryPicker
+            countryCode={chonQuocGia}
+            withFilter
+            withFlag
+            withCallingCode
+            withAlphaFilter
+            onSelect={(country) => {
+              setChonQuocGia(country.cca2);
+              setDialCode(`+${country.callingCode}`);
+            }}
           />
-          <Text>{chonQuocGia.dial_code}</Text>
-          <MaterialIcons name="keyboard-arrow-down" size={18} />
-        </TouchableOpacity>
+          <Text>{dialcode}</Text>
+        </View>
         <View style={styles.inputPhone}>
-          <TextInput placeholder="Nhập số diện thoại" />
+          <TextInput
+            placeholder="Nhập số diện thoại"
+            onChangeText={(text) => setPhoneNumber(dialcode + text)}
+          />
         </View>
       </View>
-      <View style={styles.dsQuocGia}>
-        
-      </View>
+      <TouchableOpacity
+        style={styles.createAccountButton}
+        onPress={() => navigation.navigate("Verification", { phoneNumber })}
+      >
+        <Text style={styles.createAccountText}>Tạo tài khoản</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -112,14 +117,24 @@ const styles = StyleSheet.create({
     width: 20,
   },
   dsQuocGia: {
-    backgroundColor: "grey",
-    position: "absolute",
+    flexDirection: "row",
+    alignItems: "center",
     width: 80,
-    height: 50,
-    marginLeft: 20,
     borderRadius: 10,
     borderWidth: 0.5,
-    borderColor: "black",
-    zIndex: 3,
+    height: 40,
+    backgroundColor: "#f9f9f9",
+    marginRight: 10,
+  },
+  createAccountButton: {
+    backgroundColor: "#009966",
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  createAccountText: {
+    color: "#fff",
+    fontSize: 18,
   },
 });

@@ -15,7 +15,7 @@ import * as Icon from "react-native-feather";
 import SignUpScreen from './screens/SignUpScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import RegisterPhoneScreen from './screens/RegisterPhoneScreen';
-
+import VerificationScreen from './screens/VerificationScreen';
 export default function Navigation() {
   return (
     <NavigationContainer>
@@ -43,6 +43,11 @@ export default function Navigation() {
           <Stack.Screen 
           name="RegisterPhone" 
           component={RegisterPhoneScreen} 
+          options={{ headerShown: false }} 
+        />
+          <Stack.Screen 
+          name="Verification" 
+          component={VerificationScreen} 
           options={{ headerShown: false }} 
         />
       </Stack.Navigator>
