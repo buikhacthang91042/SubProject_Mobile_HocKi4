@@ -18,7 +18,25 @@ buildscript {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.google.gms:google-services:4.4.2")
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    // Thêm resolutionStrategy ở đây để ép buộc sử dụng phiên bản 'androidx.browser:browser:1.4.0'
+    configurations.all {
+    resolutionStrategy {
+        force 'androidx.browser:browser:1.4.0'  // hoặc phiên bản bạn đang sử dụng
+        force 'androidx.core:core:1.9.0'  // hoặc phiên bản bạn đang sử dụng
+          force 'com.android.support:support-compat:27.0.2'
+    }
+}
+
+}

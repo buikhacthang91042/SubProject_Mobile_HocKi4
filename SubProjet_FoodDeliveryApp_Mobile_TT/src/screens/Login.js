@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
@@ -12,16 +12,27 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Formik } from "formik";
+import auth from '@react-native-firebase/auth'
 export default function () {
   const navigation = useNavigation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const [showPass, setShowPass] = useState(false);
   const [remberMe, setRememberMe] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    
+  const email = useRef(1);
+  const password = useRef(2);
+  
+  async function signIn(data) {
+    const {password,email} = data;
+    try {
+    const user =await auth().signInWithEmailAndPassword(email,password)
+     
+        if(user) {
+         navigation.navigate("HomeTabs")
+        }
+      } catch (error) {
+        console.error("Sign in error: ", error);
+        Alert.alert("Đăng nhập thất bại", error.message);
+      }  
   }
   return (
     <View style={style.container}>
@@ -39,9 +50,13 @@ export default function () {
         <Text style={{ opacity: 0.4 }}>Đăng nhập vào tài khoản của bạn</Text>
       </View>
       <Formik
-        onSubmit={handleLogin}
+      initialValues={{email:'', password:''}}
+        onSubmit={(value) => {
+          signIn(value)
+
+        }}
       >
-        
+        { (props) => 
           <View style={{flex:1}}>
             <View style={style.content}>
               <View style={style.content1}>
@@ -49,7 +64,9 @@ export default function () {
                 <TextInput
                   style={style.input}
                   placeholder="Nhập tài khoản của bạn"
-                 onChange={(e) => setEmail(e.target.value)}
+                  ref={email}
+                  onChangeText={props.handleChange('email')}
+                  value={props.values.email}
                 />
               </View>
               <View style={style.content2}>
@@ -57,7 +74,9 @@ export default function () {
                 <TextInput
                   style={style.input}
                   placeholder="Nhập mật khẩu cùa bạn"
-                  onChange={(e) => setPassword(e.target.value)}
+                  ref={password}
+                   onChangeText={props.handleChange('password')}
+                  value={props.values.password}
                   secureTextEntry={!showPass}
                 />
                 <TouchableOpacity
@@ -88,12 +107,13 @@ export default function () {
             <View style={style.button}>
               <TouchableOpacity
                 style={style.opacity}
-                
+                onPress={props.handleSubmit}
               >
                 <Text style={style.buttonContinue}>Đăng nhập</Text>
               </TouchableOpacity>
             </View>
           </View>
+          }
       </Formik>
 
       <View style={style.dangKi}>
