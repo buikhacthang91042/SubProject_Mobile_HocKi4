@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-import { View, Text } from 'react-native';
+
 import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import Login from './src/screens/Login';
@@ -11,21 +11,22 @@ import AccountScreen from './src/screens/AccountScreen';
 import MyOrderScreen from './src/screens/MyOrderScreen';
 import FavoriteScreen from './src/screens/FavoriteScreen';
 import InboxScreen from './src/screens/InboxScreen';
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // Updated import
+import Icon from "react-native-vector-icons/Ionicons";
 import SignUpScreen from './src/screens/SignUpScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import RegisterPhoneScreen from './src/screens/RegisterPhoneScreen';
 import VerificationScreen from './src/screens/VerificationScreen';
+import ProductScreen from './src/screens/ProductScreen';
 
 export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+       {/* <Stack.Screen 
           name="Login" 
           component={Login} 
           options={{ headerShown: false }} 
-        /> 
+        />   */}
         <Stack.Screen 
           name="HomeTabs" 
           component={HomeTabs} 
@@ -51,6 +52,16 @@ export default function Navigation() {
           component={VerificationScreen} 
           options={{ headerShown: false }} 
         />
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="Product" 
+          component={ProductScreen} 
+          options={{ headerShown: false }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -65,13 +76,13 @@ function HomeTabs() {
             case "Home":
               return <Icon name="home" size={size} color={color} />;
             case "MyOrder":
-              return <Icon name="clipboard-text" size={size} color={color} />;
+              return <Icon name="cart-outline" size={size} color={color} />;
             case "Favorite":
               return <Icon name="heart" size={size} color={color} />;
             case "Inbox":
-              return <Icon name="message" size={size} color={color} />;
+              return <Icon name="chatbox-ellipses-outline" size={size} color={color} />;
             case "Account":
-              return <Icon name="account" size={size} color={color} />;
+              return <Icon name="person-circle-outline" size={size} color={color} />;
             default:
               return null;
           }

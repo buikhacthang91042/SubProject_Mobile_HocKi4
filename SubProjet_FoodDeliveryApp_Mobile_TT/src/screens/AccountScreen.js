@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "tailwind-react-native-classnames";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // Chọn loại icon khác
+import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function AccountScreen() {
@@ -48,7 +48,7 @@ export default function AccountScreen() {
             <Text style={style.headerText}>Tài Khoản</Text>
             <View style={{ marginRight: 8, marginTop: 10 }}>
               <TouchableOpacity>
-                <Icon name="bell-outline" size={20} color="white" />
+                <Icon name="mail-outline" size={20} color="white" />
                 <View style={style.thongBao}>
                   <Text style={style.textThongBao}>99</Text>
                 </View>
@@ -74,7 +74,7 @@ export default function AccountScreen() {
           <View style={style.bangLuaChon}>
             <View style={style.luaChon}>
               <TouchableOpacity>
-                <Icon name="package" size={30} color="#009999" style={{ marginLeft: 16 }} />
+                <Icon name="clipboard-outline" size={30} color="#009999" style={{ marginLeft: 16 }} />
                 <Text style={style.textLuaChon}>Đơn hàng</Text>
               </TouchableOpacity>
             </View>
@@ -86,7 +86,7 @@ export default function AccountScreen() {
             </View>
             <View style={style.luaChon}>
               <TouchableOpacity>
-                <Icon name="home-circle" size={30} color="#FFCC00" style={{ marginLeft: 10 }} />
+                <Icon name="map-outline" size={30} color="#FFCC00" style={{ marginLeft: 10 }} />
                 <Text style={style.textLuaChon}>Địa chỉ</Text>
               </TouchableOpacity>
             </View>
@@ -98,23 +98,23 @@ export default function AccountScreen() {
               <Text style={style.tieuDeChucNang}>Tài khoản của tôi</Text>
               <View style={style.nutchucNang}>
                 <TouchableOpacity style={{ flexDirection: "row" }}>
-                  <Icon name="account" size={20} color="#009999" />
+                  <Icon name="person-remove-outline" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Quản lí tài khoản</Text>
-                  <Icon name="chevron-right" size={20} style={{ marginLeft: 18 }} />
+                  <Icon name="chevron-forward-outline" size={20} style={{ marginLeft: 18 }} />
                 </TouchableOpacity>
               </View>
               <View style={style.nutchucNang}>
                 <TouchableOpacity style={{ flexDirection: "row" }}>
-                  <Icon name="credit-card" size={20} color="#009999" />
+                  <Icon name="card-outline" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Phương thức thanh toán</Text>
-                  <Icon name="chevron-right" size={20} style={{ marginLeft: 18 }} />
+                  <Icon name="chevron-forward-outline" size={20} style={{ marginLeft: 18 }} />
                 </TouchableOpacity>
               </View>
             </View>
             <View style={style.chucNang}>
               <Text style={style.tieuDeChucNang}>Thông báo</Text>
               <View style={style.Switch}>
-                <Icon name="bell-ring" size={20} color="#009999" />
+                <Icon name="notifications-outline" size={20} color="#009999" />
                 <Text style={style.tenChucNang}>Thông báo </Text>
                 <Switch
                   value={nhanThongBao}
@@ -122,7 +122,7 @@ export default function AccountScreen() {
                 />
               </View>
               <View style={style.Switch}>
-                <Icon name="gift" size={20} color="#009999" />
+                <Icon name="notifications-outline" size={20} color="#009999" />
                 <Text style={style.tenChucNang}>Thông báo khuyến mãi</Text>
                 <Switch
                   value={nhanThongBaoKM}
@@ -133,7 +133,7 @@ export default function AccountScreen() {
             <View style={style.chucNang}>
               <Text style={style.tieuDeChucNang}>Hơn nữa</Text>
               <View style={style.Switch}>
-                <Icon name="weather-night" size={20} color="#009999" />
+                <Icon name="moon-outline" size={20} color="#009999" />
                 <Text style={style.tenChucNang}>Chế độ tối </Text>
                 <Switch
                   value={cheDoToi}
@@ -145,7 +145,7 @@ export default function AccountScreen() {
                   style={{ flexDirection: "row" }}
                   onPress={handleLogOut}
                 >
-                  <Icon name="logout" size={20} color="#009999" />
+                  <Icon name="log-out-outline" size={20} color="#009999" />
                   <Text style={style.tenChucNang}>Đăng xuất</Text>
                 </TouchableOpacity>
               </View>

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-import CountryPicker from "react-native-country-picker-modal";
+
 export default function RegisterPhoneScreen() {
   const navigation = useNavigation();
   const [chonQuocGia, setChonQuocGia] = useState("VN");
@@ -43,6 +43,8 @@ export default function RegisterPhoneScreen() {
         <View style={styles.inputPhone}>
           <TextInput
             placeholder="Nhập số diện thoại"
+            keyboardType="number-pad"
+            autoFocus={true}
             onChangeText={(text) => setPhoneNumber(dialcode + text)}
           />
         </View>

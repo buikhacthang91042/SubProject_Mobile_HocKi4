@@ -30,8 +30,8 @@ export default function () {
          navigation.navigate("HomeTabs")
         }
       } catch (error) {
-        console.error("Sign in error: ", error);
-        Alert.alert("Đăng nhập thất bại", error.message);
+        
+        Alert.alert("Tài khoản hoặc mật khẩu không đúng", "Vui lòng đăng nhập lại");
       }  
   }
   return (
@@ -87,14 +87,7 @@ export default function () {
                 </TouchableOpacity>
               </View>
               <View style={style.content3}>
-                <View style={style.remberMe}>
-                  <Switch
-                    value={remberMe}
-                    onValueChange={() => setRememberMe(!remberMe)}
-                  />
-
-                  <Text style={{ color: "blue" }}>Remember me</Text>
-                </View>
+                
                 <View>
                   <TouchableOpacity
                     onPress={() => navigation.navigate("ForgotPassword")}
@@ -219,7 +212,7 @@ const style = StyleSheet.create({
   },
   content3: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     width: "80%",
     height: 50,
     backgroundColor: "white",
